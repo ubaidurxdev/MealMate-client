@@ -27,86 +27,26 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import Link from "next/link";
 
 interface Navbar5Props {
   className?: string;
 }
 
-const Navbar5 = ({ className }: Navbar5Props) => {
-  const features = [
-    {
-      title: "Dashboard",
-      description: "Overview of your activity",
-      href: "#",
-    },
-    {
-      title: "Analytics",
-      description: "Track your performance",
-      href: "#",
-    },
-    {
-      title: "Settings",
-      description: "Configure your preferences",
-      href: "#",
-    },
-    {
-      title: "Integrations",
-      description: "Connect with other tools",
-      href: "#",
-    },
-    {
-      title: "Storage",
-      description: "Manage your files",
-      href: "#",
-    },
-    {
-      title: "Support",
-      description: "Get help when needed",
-      href: "#",
-    },
-  ];
-
+const Navbar = ({ className }: Navbar5Props) => {
   return (
     <section className={cn("py-4", className)}>
       <div className="container">
         <nav className="flex items-center justify-between">
-          <a
-            href="https://www.shadcnblocks.com"
-            className="flex items-center gap-2"
-          >
-            <img
-              src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/shadcnblockscom-icon.svg"
-              className="max-h-8"
-              alt="Shadcn UI Navbar"
-            />
+          <Link href="/" className="flex items-center gap-2">
             <span className="text-lg font-semibold tracking-tighter">
-              Shadcnblocks.com
+              MealMate
             </span>
-          </a>
+          </Link>
           <NavigationMenu className="hidden lg:block">
             <NavigationMenuList>
               <NavigationMenuItem>
                 <NavigationMenuTrigger>Features</NavigationMenuTrigger>
-                <NavigationMenuContent>
-                  <div className="grid w-[600px] grid-cols-2 p-3">
-                    {features.map((feature, index) => (
-                      <NavigationMenuLink
-                        href={feature.href}
-                        key={index}
-                        className="rounded-md p-3 transition-colors hover:bg-muted/70"
-                      >
-                        <div key={feature.title}>
-                          <p className="mb-1 font-semibold text-foreground">
-                            {feature.title}
-                          </p>
-                          <p className="text-sm text-muted-foreground">
-                            {feature.description}
-                          </p>
-                        </div>
-                      </NavigationMenuLink>
-                    ))}
-                  </div>
-                </NavigationMenuContent>
               </NavigationMenuItem>
               <NavigationMenuItem>
                 <NavigationMenuLink
@@ -147,19 +87,11 @@ const Navbar5 = ({ className }: Navbar5Props) => {
             <SheetContent side="top" className="max-h-screen overflow-auto">
               <SheetHeader>
                 <SheetTitle>
-                  <a
-                    href="https://www.shadcnblocks.com"
-                    className="flex items-center gap-2"
-                  >
-                    <img
-                      src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/shadcnblockscom-icon.svg"
-                      className="max-h-8"
-                      alt="Shadcn UI Navbar"
-                    />
+                  <Link href="/" className="flex items-center gap-2">
                     <span className="text-lg font-semibold tracking-tighter">
-                      Shadcnblocks.com
+                      MealMate
                     </span>
-                  </a>
+                  </Link>
                 </SheetTitle>
               </SheetHeader>
               <div className="flex flex-col p-4">
@@ -168,26 +100,6 @@ const Navbar5 = ({ className }: Navbar5Props) => {
                     <AccordionTrigger className="text-base hover:no-underline">
                       Features
                     </AccordionTrigger>
-                    <AccordionContent>
-                      <div className="grid md:grid-cols-2">
-                        {features.map((feature, index) => (
-                          <a
-                            href={feature.href}
-                            key={index}
-                            className="rounded-md p-3 transition-colors hover:bg-muted/70"
-                          >
-                            <div key={feature.title}>
-                              <p className="mb-1 font-semibold text-foreground">
-                                {feature.title}
-                              </p>
-                              <p className="text-sm text-muted-foreground">
-                                {feature.description}
-                              </p>
-                            </div>
-                          </a>
-                        ))}
-                      </div>
-                    </AccordionContent>
                   </AccordionItem>
                 </Accordion>
                 <div className="flex flex-col gap-6">
@@ -214,4 +126,4 @@ const Navbar5 = ({ className }: Navbar5Props) => {
   );
 };
 
-export { Navbar5 };
+export default Navbar;
