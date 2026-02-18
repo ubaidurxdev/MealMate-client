@@ -6,18 +6,15 @@ import { cn } from "@/lib/utils";
 
 import {
   Accordion,
-  AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import {
   NavigationMenu,
-  NavigationMenuContent,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
-  NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import {
@@ -35,19 +32,16 @@ interface Navbar5Props {
 
 const Navbar = ({ className }: Navbar5Props) => {
   return (
-    <section className={cn("py-4", className)}>
-      <div className="container">
+    <section className={cn("py-4 px-4", className)}>
+      <div className="container mx-auto">
         <nav className="flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2">
-            <span className="text-lg font-semibold tracking-tighter">
+            <span className="text-2xl font-semibold tracking-tighter">
               MealMate
             </span>
           </Link>
           <NavigationMenu className="hidden lg:block">
             <NavigationMenuList>
-              <NavigationMenuItem>
-                <NavigationMenuTrigger>Features</NavigationMenuTrigger>
-              </NavigationMenuItem>
               <NavigationMenuItem>
                 <NavigationMenuLink
                   href="#"
@@ -95,13 +89,6 @@ const Navbar = ({ className }: Navbar5Props) => {
                 </SheetTitle>
               </SheetHeader>
               <div className="flex flex-col p-4">
-                <Accordion type="single" collapsible className="mt-4 mb-2">
-                  <AccordionItem value="solutions" className="border-none">
-                    <AccordionTrigger className="text-base hover:no-underline">
-                      Features
-                    </AccordionTrigger>
-                  </AccordionItem>
-                </Accordion>
                 <div className="flex flex-col gap-6">
                   <a href="#" className="font-medium">
                     Templates
@@ -114,7 +101,9 @@ const Navbar = ({ className }: Navbar5Props) => {
                   </a>
                 </div>
                 <div className="mt-6 flex flex-col gap-4">
-                  <Button variant="outline">Sign in</Button>
+                  <Button variant="outline" className="text-background ">
+                    Sign in
+                  </Button>
                   <Button>Start for free</Button>
                 </div>
               </div>
