@@ -1,225 +1,161 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Badge } from "@/components/ui/badge";
 
 export default function Hero() {
   return (
-    <section className="relative bg-white text-black min-h-screen overflow-hidden">
-      {/* Simple gradient background */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_#00000008,_transparent_50%),_radial-gradient(ellipse_at_bottom_left,_#00000008,_transparent_50%)]" />
+    <section className="relative min-h-screen overflow-hidden bg-background flex items-center justify-center">
+      {/* Simple background effect */}
+      <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_transparent_0%,_background_70%)]" />
       
-      {/* Subtle pattern */}
-      <div className="absolute inset-0 opacity-[0.02]" 
-        style={{
-          backgroundImage: `radial-gradient(circle at 1px 1px, black 1px, transparent 0)`,
-          backgroundSize: '40px 40px'
-        }}
-      />
-
-      <div className="relative mx-auto max-w-7xl px-6 py-24 lg:px-8 min-h-screen flex items-center">
-        <div className="grid items-center gap-16 lg:grid-cols-2">
-          
-          {/* LEFT CONTENT */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8 }}
+      {/* Content */}
+      <div className="relative mx-auto max-w-4xl px-6 py-24 text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          {/* Big Title */}
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="text-6xl font-light leading-tight sm:text-7xl lg:text-8xl"
           >
-            {/* Badge */}
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="mb-8"
-            >
-              <span className="text-xs tracking-[0.2em] uppercase text-gray-400">
-                Full-Stack Meal Ordering Platform
-              </span>
-            </motion.div>
+            Order Smart.
+            <br />
+            <span className="font-bold text-foreground">Eat Better.</span>
+          </motion.h1>
 
-            {/* Heading */}
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
-              className="text-6xl font-light leading-[1.1] sm:text-7xl"
-            >
-              Order Smart.
-              <br />
-              <span className="font-bold text-black">Eat Better.</span>
-            </motion.h1>
+          {/* Description */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+            className="mt-6 text-lg text-muted-foreground max-w-2xl mx-auto"
+          >
+            MealMate connects customers and food providers in one seamless ecosystem.
+            Browse menus, manage orders, and track delivery in real time.
+          </motion.p>
 
-            {/* Description */}
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4 }}
-              className="mt-6 text-base text-gray-500 max-w-md leading-relaxed"
-            >
-              MealMate connects customers and food providers in one seamless ecosystem.
-              Browse menus, manage orders, and track delivery in real time.
-            </motion.p>
-
-            {/* Buttons */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5 }}
-              className="mt-10 flex gap-4"
-            >
-              <button className="px-8 py-3 bg-black text-white text-sm font-medium rounded-md hover:bg-gray-900 transition-colors">
-                Browse Meals
-              </button>
-              <button className="px-8 py-3 border border-gray-300 text-sm font-medium rounded-md hover:border-black transition-colors">
-                Become a Provider →
-              </button>
-            </motion.div>
-
-            {/* Stats */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.6 }}
-              className="mt-16 flex gap-12"
-            >
-              {[
-                { value: "10K+", label: "Orders Delivered" },
-                { value: "500+", label: "Active Providers" },
-                { value: "4.8★", label: "User Rating" },
-              ].map((stat, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.7 + i * 0.1 }}
-                >
-                  <div className="text-2xl font-bold">{stat.value}</div>
-                  <div className="text-xs text-gray-400 mt-1 tracking-wide">
-                    {stat.label}
-                  </div>
-                </motion.div>
-              ))}
-            </motion.div>
+          {/* Browse Meals Button */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4 }}
+            className="mt-10"
+          >
+            <Button size="lg" className="px-8 py-6 text-base rounded-full">
+              Browse Meals
+            </Button>
           </motion.div>
 
-          {/* RIGHT CONTENT */}
+          {/* Avatars and Rating Section */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 0.8 }}
-            className="relative"
+            transition={{ delay: 0.5 }}
+            className="mt-16 flex flex-col items-center gap-4"
           >
-            {/* Main Card */}
-            <div className="relative bg-white rounded-2xl border border-gray-200 p-8 shadow-xl">
-              {/* Card Header */}
-              <div className="flex items-center justify-between mb-6">
-                <div className="flex items-center gap-3">
-                  <div className="w-2 h-2 bg-black rounded-full" />
-                  <span className="text-sm font-medium">Active Order</span>
-                </div>
-                <span className="text-xs text-gray-400 bg-gray-50 px-3 py-1 rounded-full">
-                  #MM-2048
-                </span>
-              </div>
-
-              {/* Order Progress */}
-              <div className="space-y-5">
+            {/* Avatar Stack */}
+            <div className="flex items-center">
+              <div className="flex -space-x-3">
                 {[
-                  { label: "Order Placed", time: "12:30 PM", status: "completed" },
-                  { label: "Preparing", time: "12:35 PM", status: "active" },
-                  { label: "Ready for Pickup", time: "~12:50 PM", status: "upcoming" },
-                  { label: "Delivered", time: "~1:00 PM", status: "upcoming" },
-                ].map((item, i) => (
+                  { initials: "JD", fallback: "JD" },
+                  { initials: "AK", fallback: "AK" },
+                  { initials: "SM", fallback: "SM" },
+                  { initials: "RJ", fallback: "RJ" },
+                  { initials: "PL", fallback: "PL" },
+                ].map((user, i) => (
                   <motion.div
                     key={i}
                     initial={{ opacity: 0, x: -10 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.8 + i * 0.1 }}
-                    className="flex items-center justify-between"
+                    transition={{ delay: 0.6 + i * 0.1 }}
                   >
-                    <div className="flex items-center gap-3">
-                      <div className={`w-1.5 h-1.5 rounded-full ${
-                        item.status === "completed" ? "bg-black" :
-                        item.status === "active" ? "bg-black animate-pulse" :
-                        "bg-gray-300"
-                      }`} />
-                      <span className={`text-sm ${
-                        item.status === "completed" ? "text-black" :
-                        item.status === "active" ? "text-black font-medium" :
-                        "text-gray-400"
-                      }`}>
-                        {item.label}
-                      </span>
-                    </div>
-                    <span className={`text-xs ${
-                      item.status === "completed" ? "text-gray-600" :
-                      item.status === "active" ? "text-black" :
-                      "text-gray-300"
-                    }`}>
-                      {item.time}
-                    </span>
+                    <Avatar className="h-10 w-10 border-2 border-background">
+                      <AvatarFallback className="text-xs bg-primary/10">
+                        {user.initials}
+                      </AvatarFallback>
+                    </Avatar>
                   </motion.div>
                 ))}
               </div>
-
-              {/* Order Details */}
-              <div className="mt-8 pt-6 border-t border-gray-100">
-                <div className="flex justify-between items-center">
-                  <span className="text-sm text-gray-500">Total Items</span>
-                  <span className="text-sm font-medium">2 items</span>
-                </div>
-                <div className="flex justify-between items-center mt-2">
-                  <span className="text-sm text-gray-500">Est. Delivery</span>
-                  <span className="text-sm font-medium">15-20 min</span>
-                </div>
-              </div>
             </div>
 
-            {/* Floating Card - Popular Item */}
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 1, type: "spring", stiffness: 200 }}
-              className="absolute -bottom-6 -left-6 bg-white rounded-xl border border-gray-200 px-5 py-3 shadow-lg"
-            >
-              <div className="text-xs text-gray-400 mb-1">Popular today</div>
-              <div className="text-sm font-medium flex items-center gap-2">
-                <span>Chicken Biryani</span>
-                <span className="text-xs text-gray-400">•</span>
-                <span className="text-xs text-gray-600">$14.99</span>
+            {/* Rating */}
+            <div className="flex items-center gap-3">
+              {/* Stars */}
+              <div className="flex gap-1">
+                {[1, 2, 3, 4, 5].map((star) => (
+                  <motion.svg
+                    key={star}
+                    initial={{ opacity: 0, scale: 0 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 0.8 + star * 0.1 }}
+                    className="w-5 h-5 fill-primary text-primary"
+                    viewBox="0 0 20 20"
+                  >
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </motion.svg>
+                ))}
               </div>
-            </motion.div>
+              
+              {/* Rating Text */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 1.3 }}
+                className="flex items-center gap-2"
+              >
+                <span className="font-bold text-lg">4.8</span>
+                <span className="text-muted-foreground">·</span>
+                <span className="text-muted-foreground">2.5k+ reviews</span>
+              </motion.div>
+            </div>
 
-            {/* Floating Card - Provider Status */}
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 1.1, type: "spring", stiffness: 200 }}
-              className="absolute -top-4 -right-4 bg-white rounded-xl border border-gray-200 px-5 py-3 shadow-lg"
+            {/* Trust Text */}
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1.4 }}
+              className="text-sm text-muted-foreground mt-2"
             >
-              <div className="text-xs text-gray-400 mb-1">Active providers</div>
-              <div className="text-sm font-medium flex items-center gap-2">
-                <span className="w-1.5 h-1.5 bg-green-500 rounded-full" />
-                <span>247 online now</span>
-              </div>
-            </motion.div>
+              Trusted by 10,000+ happy customers
+            </motion.p>
           </motion.div>
-        </div>
+
+          {/* Simple decorative elements */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.5 }}
+            className="mt-20 flex justify-center gap-8 text-xs text-muted-foreground"
+          >
+            <span>⚡ 15 min delivery</span>
+            <span>🛡️ 100% secure</span>
+            <span>🌟 24/7 support</span>
+          </motion.div>
+        </motion.div>
       </div>
 
       {/* Simple scroll indicator */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.2 }}
+        transition={{ delay: 1.6 }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2"
       >
         <motion.div
           animate={{ y: [0, 5, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-          className="w-5 h-8 border border-gray-300 rounded-full flex justify-center"
+          transition={{ duration: 1.5, repeat: Infinity }}
+          className="h-8 w-5 rounded-full border border-border flex justify-center"
         >
-          <div className="w-1 h-1.5 bg-gray-400 rounded-full mt-2" />
+          <div className="h-1.5 w-1.5 rounded-full bg-foreground mt-2" />
         </motion.div>
       </motion.div>
     </section>
