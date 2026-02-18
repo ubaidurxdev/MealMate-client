@@ -26,6 +26,23 @@ interface Navbar5Props {
 }
 
 const Navbar = ({ className }: Navbar5Props) => {
+  const navItems = [
+    {
+      id: 1,
+      name: "Home",
+      slug: "/",
+    },
+    {
+      id: 2,
+      name: "Meals",
+      slug: "/meals",
+    },
+    {
+      id: 3,
+      name: "Providers",
+      slug: "/providers",
+    },
+  ];
   return (
     <section className={cn("py-4 px-4 sm:px-0", className)}>
       <div className="container mx-auto">
@@ -37,30 +54,16 @@ const Navbar = ({ className }: Navbar5Props) => {
           </Link>
           <NavigationMenu className="hidden lg:block">
             <NavigationMenuList>
-              <NavigationMenuItem>
-                <NavigationMenuLink
-                  href="#"
-                  className={navigationMenuTriggerStyle()}
-                >
-                  Products
-                </NavigationMenuLink>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
-                <NavigationMenuLink
-                  href="#"
-                  className={navigationMenuTriggerStyle()}
-                >
-                  Resources
-                </NavigationMenuLink>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
-                <NavigationMenuLink
-                  href="#"
-                  className={navigationMenuTriggerStyle()}
-                >
-                  Contact
-                </NavigationMenuLink>
-              </NavigationMenuItem>
+              {navItems.map((item) => (
+                <NavigationMenuItem key={item.id}>
+                  <NavigationMenuLink
+                    href={item.slug}
+                    className={navigationMenuTriggerStyle()}
+                  >
+                    {item.name}
+                  </NavigationMenuLink>
+                </NavigationMenuItem>
+              ))}
             </NavigationMenuList>
           </NavigationMenu>
           <div className="hidden items-center gap-4 lg:flex">
@@ -84,15 +87,11 @@ const Navbar = ({ className }: Navbar5Props) => {
               </SheetHeader>
               <div className="flex flex-col p-2">
                 <div className="flex flex-col gap-6">
-                  <a href="#" className="font-medium">
-                    Templates
-                  </a>
-                  <a href="#" className="font-medium">
-                    Blog
-                  </a>
-                  <a href="#" className="font-medium">
-                    Pricing
-                  </a>
+                  {navItems.map((item) => (
+                    <Link href={item.slug} key={item.id}>
+                      {item.name}
+                    </Link>
+                  ))}
                 </div>
                 <div className="mt-6 flex flex-col gap-4">
                   <Button>Sign in</Button>
