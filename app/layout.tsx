@@ -18,9 +18,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${hankenGrotesk.className} antialiased`}
-      >
+      <body className={`${hankenGrotesk.className} container mx-auto antialiased`}>
         {children}
       </body>
     </html>

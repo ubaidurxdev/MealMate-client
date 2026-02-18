@@ -4,11 +4,6 @@ import { MenuIcon } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 
-import {
-  Accordion,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import {
   NavigationMenu,
@@ -32,11 +27,11 @@ interface Navbar5Props {
 
 const Navbar = ({ className }: Navbar5Props) => {
   return (
-    <section className={cn("py-4 px-4", className)}>
+    <section className={cn("py-4 px-4 sm:px-0", className)}>
       <div className="container mx-auto">
         <nav className="flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2">
-            <span className="text-2xl font-semibold tracking-tighter">
+            <span className="text-2xl font-bold tracking-tighter">
               MealMate
             </span>
           </Link>
@@ -69,8 +64,7 @@ const Navbar = ({ className }: Navbar5Props) => {
             </NavigationMenuList>
           </NavigationMenu>
           <div className="hidden items-center gap-4 lg:flex">
-            <Button variant="outline">Sign in</Button>
-            <Button>Start for free</Button>
+            <Button>Sign in</Button>
           </div>
           <Sheet>
             <SheetTrigger asChild className="lg:hidden">
@@ -88,7 +82,7 @@ const Navbar = ({ className }: Navbar5Props) => {
                   </Link>
                 </SheetTitle>
               </SheetHeader>
-              <div className="flex flex-col p-4">
+              <div className="flex flex-col p-2">
                 <div className="flex flex-col gap-6">
                   <a href="#" className="font-medium">
                     Templates
@@ -101,10 +95,7 @@ const Navbar = ({ className }: Navbar5Props) => {
                   </a>
                 </div>
                 <div className="mt-6 flex flex-col gap-4">
-                  <Button variant="outline" className="text-background ">
-                    Sign in
-                  </Button>
-                  <Button>Start for free</Button>
+                  <Button>Sign in</Button>
                 </div>
               </div>
             </SheetContent>
