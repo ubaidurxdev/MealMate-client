@@ -82,36 +82,50 @@ const Navbar = ({ className }: Navbar5Props) => {
               )}
             </Button>
           </div>
-          <Sheet>
-            <SheetTrigger asChild className="lg:hidden">
-              <Button variant="outline" size="icon">
-                <MenuIcon className="h-4 w-4" />
-              </Button>
-            </SheetTrigger>
-            <SheetContent side="top" className="max-h-screen overflow-auto">
-              <SheetHeader>
-                <SheetTitle>
-                  <Link href="/" className="flex items-center gap-2">
-                    <span className="text-lg font-semibold tracking-tighter">
-                      MealMate
-                    </span>
-                  </Link>
-                </SheetTitle>
-              </SheetHeader>
-              <div className="flex flex-col p-2">
-                <div className="flex flex-col gap-6">
-                  {navItems.map((item) => (
-                    <Link href={item.slug} key={item.id}>
-                      {item.name}
+          <div className="flex items-center gap-2 lg:hidden">
+            <Button
+              variant="outline"
+              size="icon"
+              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+            >
+              {theme === "dark" ? (
+                <Sun className="size-4" />
+              ) : (
+                <Moon className="size-4" />
+              )}
+            </Button>
+            <Sheet>
+              <SheetTrigger asChild className="lg:hidden">
+                <Button variant="outline" size="icon">
+                  <MenuIcon className="h-4 w-4" />
+                </Button>
+              </SheetTrigger>
+
+              <SheetContent side="top" className="max-h-screen overflow-auto">
+                <SheetHeader>
+                  <SheetTitle>
+                    <Link href="/" className="flex items-center gap-2">
+                      <span className="text-lg font-semibold tracking-tighter">
+                        MealMate
+                      </span>
                     </Link>
-                  ))}
+                  </SheetTitle>
+                </SheetHeader>
+                <div className="flex flex-col p-2">
+                  <div className="flex flex-col gap-6">
+                    {navItems.map((item) => (
+                      <Link href={item.slug} key={item.id}>
+                        {item.name}
+                      </Link>
+                    ))}
+                  </div>
+                  <div className="mt-6 flex flex-col gap-4">
+                    <Button>Sign in</Button>
+                  </div>
                 </div>
-                <div className="mt-6 flex flex-col gap-4">
-                  <Button>Sign in</Button>
-                </div>
-              </div>
-            </SheetContent>
-          </Sheet>
+              </SheetContent>
+            </Sheet>
+          </div>
         </nav>
       </div>
     </section>
