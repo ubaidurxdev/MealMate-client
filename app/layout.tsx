@@ -19,6 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
+        suppressHydrationWarning
         className={`${hankenGrotesk.className} container mx-auto antialiased`}
       >
         {children}

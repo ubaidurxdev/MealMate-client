@@ -3,17 +3,13 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { Badge } from "@/components/ui/badge";
+import Link from "next/link";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen overflow-hidden bg-background flex items-center justify-center">
-      {/* Simple background effect */}
-      <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_transparent_0%,_background_70%)]" />
-      
+    <section className=" overflow-hidden px-6 py-16 flex items-center justify-center">
       {/* Content */}
-      <div className="relative mx-auto max-w-4xl px-6 py-24 text-center">
+      <div className=" mx-auto max-w-4xl  text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -38,8 +34,9 @@ export default function Hero() {
             transition={{ delay: 0.3 }}
             className="mt-6 text-lg text-muted-foreground max-w-2xl mx-auto"
           >
-            MealMate connects customers and food providers in one seamless ecosystem.
-            Browse menus, manage orders, and track delivery in real time.
+            MealMate connects customers and food providers in one seamless
+            ecosystem. Browse menus, manage orders, and track delivery in real
+            time.
           </motion.p>
 
           {/* Browse Meals Button */}
@@ -47,10 +44,10 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
-            className="mt-10"
+            className=""
           >
-            <Button size="lg" className="px-8 py-6 text-base rounded-full">
-              Browse Meals
+            <Button size="lg" className="px-8 py-6 mt-8 text-base rounded-full">
+              <Link href={"/meals"}>Browse Meals</Link>
             </Button>
           </motion.div>
 
@@ -59,7 +56,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5 }}
-            className="mt-16 flex flex-col items-center gap-4"
+            className="mt-12 flex flex-col items-center gap-4"
           >
             {/* Avatar Stack */}
             <div className="flex items-center">
@@ -104,7 +101,7 @@ export default function Hero() {
                   </motion.svg>
                 ))}
               </div>
-              
+
               {/* Rating Text */}
               <motion.div
                 initial={{ opacity: 0 }}
@@ -134,7 +131,7 @@ export default function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.5 }}
-            className="mt-20 flex justify-center gap-8 text-xs text-muted-foreground"
+            className="mt-12 flex justify-center gap-8 text-xs text-muted-foreground"
           >
             <span>⚡ 15 min delivery</span>
             <span>🛡️ 100% secure</span>
@@ -142,22 +139,6 @@ export default function Hero() {
           </motion.div>
         </motion.div>
       </div>
-
-      {/* Simple scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.6 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
-      >
-        <motion.div
-          animate={{ y: [0, 5, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity }}
-          className="h-8 w-5 rounded-full border border-border flex justify-center"
-        >
-          <div className="h-1.5 w-1.5 rounded-full bg-foreground mt-2" />
-        </motion.div>
-      </motion.div>
     </section>
   );
 }
