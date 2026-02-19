@@ -21,6 +21,7 @@ import {
 } from "@/components/ui/sheet";
 import Link from "next/link";
 import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
 
 interface Navbar5Props {
   className?: string;
@@ -28,6 +29,15 @@ interface Navbar5Props {
 
 const Navbar = ({ className }: Navbar5Props) => {
   const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return null;
+  }
   const navItems = [
     {
       id: 1,
@@ -69,7 +79,9 @@ const Navbar = ({ className }: Navbar5Props) => {
             </NavigationMenuList>
           </NavigationMenu>
           <div className="hidden items-center gap-4 lg:flex">
-            <Button><Link href={'/login'}>Sign in</Link></Button>
+            <Button>
+              <Link href={"/login"}>Sign in</Link>
+            </Button>
             <Button
               variant={"outline"}
               size={"icon"}
