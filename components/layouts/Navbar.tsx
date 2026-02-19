@@ -3,7 +3,7 @@
 import { MenuIcon } from "lucide-react";
 
 import { cn } from "@/lib/utils";
-
+import { Moon, Sun } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   NavigationMenu,
@@ -20,12 +20,14 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import Link from "next/link";
+import { useTheme } from "next-themes";
 
 interface Navbar5Props {
   className?: string;
 }
 
 const Navbar = ({ className }: Navbar5Props) => {
+  const { theme, setTheme } = useTheme();
   const navItems = [
     {
       id: 1,
@@ -68,6 +70,17 @@ const Navbar = ({ className }: Navbar5Props) => {
           </NavigationMenu>
           <div className="hidden items-center gap-4 lg:flex">
             <Button>Sign in</Button>
+            <Button
+              variant={"outline"}
+              size={"icon"}
+              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+            >
+              {theme === "dark" ? (
+                <Sun className="size-5" />
+              ) : (
+                <Moon className="size-5" />
+              )}
+            </Button>
           </div>
           <Sheet>
             <SheetTrigger asChild className="lg:hidden">

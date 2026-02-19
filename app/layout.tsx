@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Hanken_Grotesk } from "next/font/google";
 import "./globals.css";
+import { ThemeProvider } from "@/providers/ThemeProvider";
 
 const hankenGrotesk = Hanken_Grotesk({
   subsets: ["latin"],
@@ -22,7 +23,14 @@ export default function RootLayout({
         suppressHydrationWarning
         className={`${hankenGrotesk.className} container mx-auto antialiased`}
       >
-        {children}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
