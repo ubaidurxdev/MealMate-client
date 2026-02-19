@@ -7,33 +7,31 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
+import Google from "@/components/svg/Google";
 
 export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-white dark:bg-black px-4 transition-colors">
-      <Card className="w-full max-w-md shadow-2xl border border-gray-200 dark:border-gray-800">
+    <div className="h-[calc(100vh-68px)] flex items-center justify-center  px-4 ">
+      <Card className="w-full max-w-md border border-gray-200 dark:border-gray-800">
         <CardContent className="p-8 space-y-6">
           {/* Logo + Title */}
           <div className="text-center space-y-2">
-            <h1 className="text-3xl font-bold tracking-tight text-black dark:text-white">
-              Welcome Back
+            <h1 className="text-3xl font-bold tracking-tight pb-4 border-b border-gray-200 dark:border-gray-800 text-black dark:text-white">
+              Welcome to MealMate
             </h1>
-            <p className="text-sm text-muted-foreground">
-              Login to continue ordering delicious meals 🍱
-            </p>
           </div>
 
           {/* Email Field */}
           <div className="space-y-2">
             <label className="text-sm font-medium">Email</label>
             <div className="relative">
-              <Mail className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
+              <Mail className="absolute left-3 top-5 h-4 w-4 text-muted-foreground" />
               <Input
                 type="email"
                 placeholder="you@example.com"
-                className="pl-10"
+                className="pl-10 mt-2"
               />
             </div>
           </div>
@@ -42,16 +40,16 @@ export default function LoginPage() {
           <div className="space-y-2">
             <label className="text-sm font-medium">Password</label>
             <div className="relative">
-              <Lock className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
+              <Lock className="absolute left-3 top-5 h-4 w-4 text-muted-foreground" />
               <Input
                 type={showPassword ? "text" : "password"}
                 placeholder="Enter your password"
-                className="pl-10 pr-10"
+                className="pl-10 pr-10 mt-2"
               />
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-3 top-3 text-muted-foreground"
+                className="absolute right-3 top-5 text-muted-foreground"
               >
                 {showPassword ? (
                   <EyeOff className="h-4 w-4" />
@@ -60,16 +58,6 @@ export default function LoginPage() {
                 )}
               </button>
             </div>
-          </div>
-
-          {/* Forgot password */}
-          <div className="flex justify-end">
-            <Link
-              href="/forgot-password"
-              className="text-sm text-black dark:text-white hover:underline"
-            >
-              Forgot password?
-            </Link>
           </div>
 
           {/* Login Button */}
@@ -91,15 +79,8 @@ export default function LoginPage() {
               variant="outline"
               className="w-full border-gray-300 dark:border-gray-700"
             >
+              <Google />
               Continue with Google
-            </Button>
-
-            {/* Facebook */}
-            <Button
-              variant="outline"
-              className="w-full border-gray-300 dark:border-gray-700"
-            >
-              Continue with Facebook
             </Button>
           </div>
 
