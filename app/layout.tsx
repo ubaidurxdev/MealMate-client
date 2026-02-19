@@ -18,9 +18,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
-        suppressHydrationWarning
         className={`${hankenGrotesk.className} container mx-auto antialiased`}
       >
         <ThemeProvider
