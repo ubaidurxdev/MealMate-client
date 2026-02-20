@@ -79,9 +79,10 @@ const Navbar = ({ className }: Navbar5Props) => {
             </NavigationMenuList>
           </NavigationMenu>
           <div className="hidden items-center gap-4 lg:flex">
-            <Button>
-              <Link href={"/login"}>Sign in</Link>
-            </Button>
+            <Link href={"/login"}>
+              <Button>Sign in</Button>
+            </Link>
+
             <Button
               variant={"outline"}
               size={"icon"}

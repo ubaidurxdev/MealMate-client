@@ -16,11 +16,11 @@ export default function RegisterPage() {
   return (
     <div className="h-[calc(100vh-68px)] flex items-center justify-center px-4">
       <Card className="w-full max-w-md border border-gray-200 dark:border-gray-800">
-        <CardContent className="p-8 space-y-6">
+        <CardContent className="p-8 space-y-4">
           {/* Title */}
           <div className="text-center space-y-2">
             <h1 className="text-3xl font-bold tracking-tight pb-4 border-b border-gray-200 dark:border-gray-800 text-black dark:text-white">
-              Create Your MealMate Account
+              Welcome to MealMate 
             </h1>
           </div>
 
