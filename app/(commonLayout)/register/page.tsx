@@ -11,7 +11,6 @@ import Google from "@/components/svg/Google";
 
 export default function RegisterPage() {
   const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   return (
     <div className="h-[calc(100vh-68px)] flex items-center justify-center px-4">
@@ -20,7 +19,7 @@ export default function RegisterPage() {
           {/* Title */}
           <div className="text-center space-y-2">
             <h1 className="text-3xl font-bold tracking-tight pb-4 border-b border-gray-200 dark:border-gray-800 text-black dark:text-white">
-              Welcome to MealMate 
+              Welcome to MealMate
             </h1>
           </div>
 
@@ -76,26 +75,12 @@ export default function RegisterPage() {
 
           {/* Confirm Password Field */}
           <div className="space-y-2">
-            <label className="text-sm font-medium">Confirm Password</label>
-            <div className="relative">
-              <Lock className="absolute left-3 top-5 h-4 w-4 text-muted-foreground" />
-              <Input
-                type={showConfirmPassword ? "text" : "password"}
-                placeholder="Confirm your password"
-                className="pl-10 pr-10 mt-2"
-              />
-              <button
-                type="button"
-                onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                className="absolute right-3 top-5 text-muted-foreground"
-              >
-                {showConfirmPassword ? (
-                  <EyeOff className="h-4 w-4" />
-                ) : (
-                  <Eye className="h-4 w-4" />
-                )}
-              </button>
-            </div>
+            <label className="text-sm font-medium">Sign up as</label>
+
+            <select className=" block  p-2 file:text-foreground placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground dark:bg-input/30 border-input h-9 w-full min-w-0 rounded-md border bg-transparent px-3 py-1 text-base shadow-xs transition-[color,box-shadow] outline-none file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm ">
+              <option value="customer">Customer</option>
+              <option value="provider">Provider</option>
+            </select>
           </div>
 
           {/* Register Button */}
