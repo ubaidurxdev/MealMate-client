@@ -8,9 +8,22 @@ import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import Google from "@/components/svg/Google";
+import { authClient } from "@/lib/auth-client";
 
 export default function RegisterPage() {
   const [showPassword, setShowPassword] = useState(false);
+  const handleGoogleLogin = async () => {
+    try {
+      const data = authClient.signIn.social({
+        provider: "google",
+        callbackURL: process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000",
+      });
+
+      console.log("Success:", data);
+    } catch (error) {
+      console.error("Google Login Error:", error);
+    }
+  };
 
   return (
     <div className="h-[calc(100vh-68px)] flex items-center justify-center px-4">
@@ -98,6 +111,7 @@ export default function RegisterPage() {
           {/* Social Signup */}
           <Button
             variant="outline"
+            onClick={() => handleGoogleLogin()}
             className="w-full border-gray-300 dark:border-gray-700"
           >
             <Google />
