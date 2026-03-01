@@ -11,7 +11,6 @@ import Google from "@/components/svg/Google";
 
 export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
-
   return (
     <div className="h-[calc(100vh-68px)] flex items-center justify-center  px-4 ">
       <Card className="w-full max-w-md border border-gray-200 dark:border-gray-800">

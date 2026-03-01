@@ -9,6 +9,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import Google from "@/components/svg/Google";
 import { authClient } from "@/lib/auth-client";
+import { toast } from "sonner";
 
 export default function RegisterPage() {
   const [showPassword, setShowPassword] = useState(false);
@@ -19,11 +20,26 @@ export default function RegisterPage() {
     const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(name, email, password);
+    const role = form.role.value;
+
+
+    const { data, error } = await authClient.signUp.email({
+      name: name, 
+      email: email,
+      password: password,
+      role : role,
+      callbackURL: "http://localhost:3000",
+    },{
+    });
+    if(error){
+      console.log(error)
+    }
+    console.log(data)
+    toast.success("User Created Successfully");
   };
 
   const handleGoogleLogin = async () => {
-    await authClient.signIn.social({
+    authClient.signIn.social({
       provider: "google",
       callbackURL: process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000",
     });
@@ -108,7 +124,7 @@ export default function RegisterPage() {
             </div>
 
             {/* Register Button */}
-            <Button className="w-full bg-black text-white hover:bg-gray-800 dark:bg-white dark:text-black dark:hover:bg-gray-200 transition">
+            <Button className="w-full bg-black text-white mt-3 hover:bg-gray-800 dark:bg-white dark:text-black dark:hover:bg-gray-200 transition">
               Create Account
             </Button>
           </form>
