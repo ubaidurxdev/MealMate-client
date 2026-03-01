@@ -10,6 +10,7 @@ import { Separator } from "@/components/ui/separator";
 import Google from "@/components/svg/Google";
 import { authClient } from "@/lib/auth-client";
 import { toast } from "sonner";
+import { handleGoogleLogin } from "@/components/shared/SocialLogin";
 
 export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
@@ -24,8 +25,9 @@ export default function LoginPage() {
       rememberMe: true,
       callbackURL: "http://localhost:3000",
     });
-    console.log(data);
-    toast.success("Successfully logged in");
+    if(data?.user){
+      toast.success("Successfully logged in");
+    }
     if (error) {
       console.log(error);
     }
@@ -98,6 +100,7 @@ export default function LoginPage() {
             {/* Google */}
             <Button
               variant="outline"
+              onClick={handleGoogleLogin}
               className="w-full border-gray-300 dark:border-gray-700"
             >
               <Google />

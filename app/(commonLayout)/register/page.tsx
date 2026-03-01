@@ -10,6 +10,15 @@ import { Separator } from "@/components/ui/separator";
 import Google from "@/components/svg/Google";
 import { authClient } from "@/lib/auth-client";
 import { toast } from "sonner";
+import { handleGoogleLogin } from "@/components/shared/SocialLogin";
+
+type ExtendedSignUp = {
+  email: string;
+  name: string;
+  password: string;
+  role?: string;
+  callbackURL?: string;
+};
 
 export default function RegisterPage() {
   const [showPassword, setShowPassword] = useState(false);
@@ -22,13 +31,7 @@ export default function RegisterPage() {
     const email = formData.get("email") as string;
     const password = formData.get("password") as string;
     const role = formData.get("role") as string;
-    type ExtendedSignUp = {
-      email: string;
-      name: string;
-      password: string;
-      role?: string;
-      callbackURL?: string;
-    };
+
     const { data, error } = await authClient.signUp.email({
       name: name,
       email: email,
@@ -36,18 +39,15 @@ export default function RegisterPage() {
       role: role,
       callbackURL: "http://localhost:3000",
     } as ExtendedSignUp);
-    toast.success("User Created Successfully");
+    if (data?.user) {
+      toast.success("User Created Successfully");
+    }
     if (error) {
       console.log(error);
     }
   };
 
-  const handleGoogleLogin = async () => {
-    authClient.signIn.social({
-      provider: "google",
-      callbackURL: process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000",
-    });
-  };
+ 
 
   return (
     <div className="h-[calc(100vh-68px)] flex items-center justify-center px-4">
