@@ -22,20 +22,21 @@ export default function RegisterPage() {
     const password = form.password.value;
     const role = form.role.value;
 
-
-    const { data, error } = await authClient.signUp.email({
-      name: name, 
-      email: email,
-      password: password,
-      role : role,
-      callbackURL: "http://localhost:3000",
-    },{
-    });
-    if(error){
-      console.log(error)
-    }
-    console.log(data)
+    const { data, error } = await authClient.signUp.email(
+      {
+        name: name,
+        email: email,
+        password: password,
+        role: role,
+        callbackURL: "http://localhost:3000",
+      },
+      {},
+    );
+    console.log(data);
     toast.success("User Created Successfully");
+    if (error) {
+      console.log(error);
+    }
   };
 
   const handleGoogleLogin = async () => {
@@ -111,15 +112,15 @@ export default function RegisterPage() {
             </div>
 
             {/* User role Field */}
-            <div className="space-y-2">
+            <div className="space-y-2 mt-2">
               <label className="text-sm font-medium">Sign up as</label>
 
               <select
                 name="role"
-                className=" block  p-2 file:text-foreground placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground dark:bg-input/30 border-input h-9 w-full min-w-0 rounded-md border bg-transparent px-3 py-1 text-base shadow-xs transition-[color,box-shadow] outline-none file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm "
+                className=" block p-2 mt-1 file:text-foreground placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground dark:bg-input/30 border-input h-9 w-full min-w-0 rounded-md border bg-transparent px-3 py-1 text-base shadow-xs transition-[color,box-shadow] outline-none file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm "
               >
-                <option value="customer">Customer</option>
-                <option value="provider">Provider</option>
+                <option value="Customer">Customer</option>
+                <option value="Provider">Provider</option>
               </select>
             </div>
 
