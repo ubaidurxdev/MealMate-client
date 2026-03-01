@@ -14,14 +14,15 @@ import { toast } from "sonner";
 export default function RegisterPage() {
   const [showPassword, setShowPassword] = useState(false);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const form = e.target;
-    const name = form.name.value;
-    const email = form.email.value;
-    const password = form.password.value;
-    const role = form.role.value;
+    const formData = new FormData(e.currentTarget);
 
+    const name = formData.get("name") as string;
+    const email = formData.get("email") as string;
+    const password = formData.get("password") as string;
+    const role = formData.get("role") as string;
+    
     const { data, error } = await authClient.signUp.email(
       {
         name: name,
@@ -32,7 +33,6 @@ export default function RegisterPage() {
       },
       {},
     );
-    console.log(data);
     toast.success("User Created Successfully");
     if (error) {
       console.log(error);
