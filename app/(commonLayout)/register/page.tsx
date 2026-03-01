@@ -22,17 +22,20 @@ export default function RegisterPage() {
     const email = formData.get("email") as string;
     const password = formData.get("password") as string;
     const role = formData.get("role") as string;
-    
-    const { data, error } = await authClient.signUp.email(
-      {
-        name: name,
-        email: email,
-        password: password,
-        role: role,
-        callbackURL: "http://localhost:3000",
-      },
-      {},
-    );
+    type ExtendedSignUp = {
+      email: string;
+      name: string;
+      password: string;
+      role?: string;
+      callbackURL?: string;
+    };
+    const { data, error } = await authClient.signUp.email({
+      name: name,
+      email: email,
+      password: password,
+      role: role,
+      callbackURL: "http://localhost:3000",
+    } as ExtendedSignUp);
     toast.success("User Created Successfully");
     if (error) {
       console.log(error);
